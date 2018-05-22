@@ -1,0 +1,219 @@
+{
+  "__comment": "all directory and file names are suffixed by",
+  "__comment": "the height, width, depth of the volumes",
+
+  "__comment": "size to use for final volumes",
+  "height": 48,
+  "width": 48,
+  "depth": 48,
+
+  "__comment": "suffix for files",
+  "suffix": "_clean",
+
+  "__comment": "#1 SCALE",
+  "__comment": "--------- --------- --------- --------- --------- --------- --------- ---------",
+  "raw_directory": "/work/data/modelnet/dresser/train",
+  "scaled_directory": "/work/data/modelnet/dresser/train_scaled",
+
+  "__comment": "maximum number of meshes to consider",
+  "limit": 200,
+
+  "__comment": "padding in unit cube applied to the largest dimension (i.e. dimension with the largest",
+  "__comment": "extents of the CAD model",
+  "padding": 0.25,
+
+  "__comment": "#2 WATERTIGHT",
+  "__comment": "--------- --------- --------- --------- --------- --------- --------- ---------",
+
+  "depth_directory": "/work/data/modelnet/dresser/train_depth",
+  "tsdf_directory": "/work/data/modelnet/dresser/train_tsdf",
+  "watertight_directory": "/work/data/modelnet/dresser/train_watertight",
+
+  "__comment": "settings for rendering views for making models watertight using fusion",
+  "watertight_rendering": {
+    "n_views": 100,
+    "mesh_center": [
+      0,
+      0,
+      1.5
+    ],
+    "image_height": 640,
+    "image_width": 640,
+    "focal_length_x": 640,
+    "focal_length_y": 640,
+    "principal_point_x": 320,
+    "principal_point_y": 320,
+    "__comment": "subtract a constant consisting of depth_offset_factor*voxel_size from the depth maps",
+    "depth_offset_factor": 1.5
+  },
+
+  "__comment": "fusion parameters for making models watertight",
+  "watertight_fusion": {
+    "resolution": 256,
+    "__comment": "1/resolution (0.00390625 for 256, 0.001953125 for 512)",
+    "voxel_size": 0.00390625,
+    "__comment": "k*voxel_size for k in [2, ..., 10] (0.02734375 for 256, 0.01171875 fo 512)",
+    "truncation": 0.015625
+  },
+
+  "__comment": "#3 WATERTIGHT",
+  "__comment": "--------- --------- --------- --------- --------- --------- --------- ---------",
+
+  "simplified_directory": "/work/data/modelnet/dresser/train_simplified",
+  "simplification_script": "simplification.mlx",
+
+  "__comment": "#4 SPLIT",
+  "__comment": "--------- --------- --------- --------- --------- --------- --------- ---------",
+
+  "__comment": "contains the models for each training/training_prior set",
+  "splitted_directory": "/work/data/modelnet/dresser/training_prior_splitted",
+
+  "__comment": "fraction of original training set to take (randomly)",
+  "number": 100,
+
+  "__comment": "#5 MULTIPLY",
+  "__comment": "--------- --------- --------- --------- --------- --------- --------- ---------",
+
+  "__comment": "output directory and txt file keeping record",
+  "off_dir": "/work/data/modelnet/dresser/training_prior_off",
+  "off_file": "/work/data/modelnet/dresser/training_prior_off",
+
+  "__comment": "number of random versions of each CAD model",
+  "multiplier": 10,
+
+  "__comment": "noise of scale, i.e. scale is changed randomly in [1 - scale_noise, 1 + scale_noise]",
+  "max_scale": 0.075,
+  "min_scale": -0.075,
+
+  "__comment": "noise around the center, i.e. the origin",
+  "min_x_translation": 0,
+  "max_x_translation": 0,
+  "min_y_translation": 0,
+  "max_y_translation": 0,
+  "min_z_translation": 0,
+  "max_z_translation": 0,
+
+  "__comment": "in low resolutions, an angle of 45 degrees may look skewed",
+  "__comment": "this is the rotation for the meshes, for the rendering, a separate rotation",
+  "__comment": "is possible which allows to have observations from all sides while the",
+  "__comment": "model itself is always oriented similarly",
+  "__comment": "maximum rotation around the x axis in degrees",
+  "max_x_rotation": 0,
+  "__comment": "maximum rotation around the y axis in degrees",
+  "max_y_rotation": 10,
+  "__comment": "maximum rotation around the z axis in degrees",
+  "max_z_rotation": 0,
+
+  "__comment": "#6 VOXELIZE MESHS",
+  "__comment": "--------- --------- --------- --------- --------- --------- --------- ---------",
+
+  "__comment": "whether to compute SDFs (slower!)",
+  "sdf": false,
+
+  "__comment": "directory for scaled, gt meshes",
+  "off_gt_dir": "/work/data/modelnet/dresser/training_prior_off_gt",
+  "__comment": "h5 file for computed signed distance functions",
+  "sdf_file": "/work/data/modelnet/dresser/training_prior_sdf",
+  "__comment": "h5 file for occupancy derived from signed distance functions",
+  "output_file": "/work/data/modelnet/dresser/training_prior_outputs",
+  "filled_file": "/work/data/modelnet/dresser/training_prior_filled",
+
+  "__comment": "#7 RENDER",
+  "__comment": "--------- --------- --------- --------- --------- --------- --------- ---------",
+
+  "__comment": "randomly sampled rotations for rendering",
+  "__comment": "the y rotation allows to 'observe' the car from different sides while",
+  "__comment": "the model itself is always oriented similarly",
+  "render_max_y_rotation": 180,
+  "render_min_y_rotation": -180,
+  "__comment": "rendering is done 'upside-down', i.e. max and min are interchanged here!",
+  "render_max_x_rotation": 0,
+  "render_min_x_rotation": -60,
+
+  "__comment": "number of renderings/observations generated",
+  "n_observations": 10,
+
+  "__comment": "note that different tools might operate in different coordinate systems",
+  "__comment": "for example, librender has a camera centered at (0, 0, 0) looking in the direction of (0, 0, 1)",
+
+  "__comment": "intrinsic camera parameters for rendering",
+  "__comment": "use this animation to set the paramters: http://ksimek.github.io/2013/08/13/intrinsic/",
+  "__comment": "note that paramters also need t match z_near, z_far, max_depth_value and mesh_center for good results",
+  "__comment": "focal length can be 1.5*image_width and 2.5*image_height",
+  "focal_length_x": 144,
+  "focal_length_y": 144,
+  "principal_point_x": 48,
+  "principal_point_y": 48,
+
+  "__comment": "image size for rendering",
+  "image_height": 96,
+  "image_width": 96,
+
+  "__comment": "depth is rendered between z_near and z_far;",
+  "__comment": "as the mesh lives in (-0.5 to 0.5, -0.5 to 0.5, -0.5 to 0.5) and is moved to mesh_center (see below)",
+  "__comment": "z_near and z_far are usually mesh_center_z +- 0.5",
+  "__comment": "max_depth_value should then correspond to a number between z_near and z_far, usually z_far",
+
+  "__comment": "'nearest' depth value",
+  "z_near": 2,
+  "__comment": "'farthest' depth value",
+  "z_far": 3,
+
+  "__comment": "maximum depth value used to distinguish background from object",
+  "__comment": "corresponds to z_far above or a value below that",
+  "__comment": "also see librender/pyrender.pyx for details!",
+  "max_depth_value": 2.99,
+
+  "__comment": "translation used from (0, 0, 0) centered mesh to the center in front of the camera",
+  "__comment": "the farther away, the higher the resolution should be for appropriate resolution of point clouds",
+  "mesh_center_x": 0,
+  "mesh_center_y": 0,
+  "mesh_center_z": 2.5,
+
+  "__comment": "h5 file for the depth maps",
+  "depth_file": "/work/data/modelnet/dresser/training_prior_depth",
+  "__comment": "h5 file for rendering rotations",
+  "render_orientation_file": "/work/data/modelnet/dresser/training_prior_angles",
+
+  "__comment": "#8 VOXELIZE CLOUDS",
+  "__comment": "--------- --------- --------- --------- --------- --------- --------- ---------",
+
+  "__comment": "lambda of en exponential distribution to add random noise to the depth values",
+  "lambda": 0,
+
+  "__comment": "probability of ignoring a ray, i.e. go through the ray with maximum depth",
+  "ignore": 0.0,
+
+  "__comment": "directory for scaled, gt point clouds",
+  "txt_gt_dir": "/work/data/modelnet/dresser/training_prior_txt_gt",
+  "__comment": "h5 file for voxelized point clouds and corresponding distance transforms",
+  "input_file": "/work/data/modelnet/dresser/training_prior_inputs",
+  "input_sdf_file": "/work/data/modelnet/dresser/training_prior_inputs_sdf",
+
+  "__comment": "h5 file for voxelized free space and corresponding distance transforms",
+  "space_file": "/work/data/modelnet/dresser/training_prior_space",
+
+  "__comment": "#9 POST PROCESS",
+  "__comment": "--------- --------- --------- --------- --------- --------- --------- ---------",
+
+  "synthetic_sdf": true,
+  "truncation": 5,
+  "__comment": "h5 file for truncated SDF",
+  "tsdf_file": "/work/data/modelnet/dresser/training_prior_tsdf",
+  "__comment": "h5 file for log-truncated SDF",
+  "ltsdf_file": "/work/data/modelnet/dresser/training_prior_ltsdf",
+  "__comment": "h5 file for truncated SDF",
+  "input_tsdf_file": "/work/data/modelnet/dresser/training_prior_inputs_tsdf",
+  "__comment": "h5 file for log-truncated SDF",
+  "input_ltsdf_file": "/work/data/modelnet/dresser/training_prior_inputs_ltsdf",
+
+  "__comment": "#10 RECONSTRUCT",
+  "__comment": "--------- --------- --------- --------- --------- --------- --------- ---------",
+
+  "reconstructed_dir": "/work/data/modelnet/dresser/training_prior_off_rec",
+
+  "__comment": "#12 VISUALIZE",
+  "__comment": "--------- --------- --------- --------- --------- --------- --------- ---------",
+
+  "vis_dir": "/work/data/modelnet/dresser/training_prior_vis"
+}

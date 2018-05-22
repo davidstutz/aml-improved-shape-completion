@@ -1,0 +1,124 @@
+{
+  "__comment": "DATA PARAMETERS",
+  "__comment": "---------------------------------------------------------------",
+
+  "__comment": "base directory for outputs",
+  "base_directory": "bathtub.high/",
+
+  "data_directory": "/BS/dstutz2/work/backup/shape-completion/ijcv/data/bathtub/",
+  "inference_training_inputs": "training_inference_inputs_10_128x128_64x64x64_clean.h5",
+  "inference_training_sdf_inputs": "training_inference_inputs_ltsdf_10_128x128_64x64x64_clean.h5",
+  "inference_training_space": "training_inference_space_10_128x128_64x64x64_clean.h5",
+  "inference_training_outputs": "training_inference_filled_10_128x128_64x64x64_clean.h5",
+  "inference_training_sdf_outputs": "training_inference_ltsdf_10_128x128_64x64x64_clean.h5",
+
+  "prior_training_outputs": "training_prior_filled_10_128x128_64x64x64_clean.h5",
+  "prior_training_sdf_outputs": "training_prior_ltsdf_10_128x128_64x64x64_clean.h5",
+
+  "validation_inputs": "test_inputs_10_128x128_64x64x64_clean.h5",
+  "validation_sdf_inputs": "test_inputs_ltsdf_10_128x128_64x64x64_clean.h5",
+  "validation_space": "test_space_10_128x128_64x64x64_clean.h5",
+  "validation_outputs": "test_filled_10_128x128_64x64x64_clean.h5",
+  "validation_sdf_outputs": "test_ltsdf_10_128x128_64x64x64_clean.h5",
+
+  "validation_gt_txt_directory": "test_txt_gt_10_128x128_64x64x64_clean",
+  "validation_gt_off_directory":"test_off_gt_10_128x128_64x64x64_clean",
+
+  "n_observations": 10,
+
+  "__comment": "MODEL PARAMETERS",
+  "__comment": "---------------------------------------------------------------",
+
+  "__comment": "feature maps/channels in each layer (excluding input) until code",
+  "__comment": "example: list of length 3 will create 3 convolutional layers, followed by pooling and relu",
+  "channels": [4, 8, 16, 32, 32, 64, 64, 128, 128],
+
+  "__comment": "kernel sizes of the layers defined above",
+  "kernel_sizes": [3, 3, 3, 3, 3, 3, 3, 3, 3],
+
+  "__comment": "after which convolutional layer to apply pooling",
+  "pooling": [true, false, true, false, true, false, true, false, true],
+  "pooling_sizes": [[2, 2, 2], [1, 1, 1], [2, 2, 2], [1, 1, 1], [2, 2, 2], [1, 1, 1], [2, 2, 2], [1, 1, 1], [2, 2, 2]],
+
+  "__comment": "the transfer function to use",
+  "transfer": "relu",
+
+  "__comment": "after which convolutional layers to set a traner function",
+  "transfers": [true, true, true, true, true, true, true, true, true],
+
+  "__comment": "after which convolutional layers to put normalization",
+  "normalizations": [true, true, true, true, true, true, true, true, true],
+
+  "__comment": "after which convolutional layers to put dropout (always after pooling)",
+  "dropouts": [false, false, false, false, false, false, false, false, false],
+
+  "__comment": "size of the learned code",
+  "code": 10,
+
+  "prior_parameters": {
+    "model_file": "prior_model.dat"
+  },
+
+  "__comment": "VAE AML",
+  "__comment": "---------------------------------------------------------------",
+
+  "vae_aml_parameters": {
+    "criteria": ["occpointbce", "occspacebce", "sdfpointbce", "sdfspacebce"],
+    "weights": [0.25, 0.25, 0.25, 0.25],
+    "weighted": false,
+
+    "__comment": "whether to size average all losses",
+    "size_average": false,
+
+    "__comment": "whether to re-intialize the encoder using the settings below",
+    "reinitialize_encoder": true,
+
+    "__comment": "weight for prior on the code",
+    "prior_weight": 2,
+    "prior_goal": 0,
+    "optimizer": "adam",
+
+    "__comment": "learning rate to employ",
+    "learning_rate": 0.0001,
+    "__comment": "momentum parameter",
+    "momentum": 0.5,
+    "__comment": "weight decay parameters",
+    "weight_decay": 0.0001,
+    "__comment": "batch size",
+    "batch_size": 16,
+    "__comment": "number of epochs",
+    "epochs": 35,
+    "__comment": "initialization scheme to use for weights, see init.lua",
+    "weight_initialization": "xavier_half",
+    "__comment": "if 'fixed' or 'normal' is chosen",
+    "weight_value": 0.02,
+    "__comment": "initialization scheme to use for biases, see init.lua",
+    "bias_initialization": "fixed",
+    "__comment": "if 'fixed' is chosen",
+    "bias_value": 0.0,
+
+    "__comment": "every decay_iterations iteration, the learning rate and momentum is updated",
+    "decay_iterations": 215,
+    "__comment": "learning rate is mulitplied by this value each decay_iterations",
+    "decay_learning_rate": 0.9,
+    "__comment": "minimum learning rate allowed",
+    "minimum_learning_rate": 0.000000001,
+    "__comment": "momentum is multiplied by this value each decay_iterations",
+    "decay_momentum": 1.025,
+    "__comment": "maximum momentum allowed",
+    "maximum_momentum": 0.9,
+
+    "model_file": "vae_aml_model.dat"
+  },
+
+  "__comment": "model is tested on validation set every test_iterations iterations",
+  "test_iterations": 100,
+  "test_directory": "test/",
+  "codes_file": "codes_10_100.h5",
+  "loss_iterations": 10,
+
+  "__comment": "file to save protocol of training in",
+  "train_protocol_file": "train_protocol.h5",
+  "val_protocol_file": "val_protocol.h5",
+  "early_stop_file": "early_stop.h5"
+}
