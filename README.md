@@ -245,7 +245,13 @@ Make sure to cite [3] and [4] in addition to this paper when using the data.
 
 ## Models
 
-Models can be downloaded here: [Models](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_models.zip).
+Models can be downloaded here:
+
+* [AML Models](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_models_aml.zip).
+* [Dai et al. Models](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_models_dai.zip).
+* [Sup (Supervised Baseline) Models](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_models_sup.zip).
+* [DVAE (Shape Prior) Models](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_models_vae.zip).
+
 The downloaded ZIP-archive contains models for the approach by Dai et al.,
 our supervised baseline, our shape prior and the AML approach. The
 directory structure is named according to the configuration files. For example,
