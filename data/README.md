@@ -27,16 +27,16 @@ the simplified models.
 
 Download links:
 
-* [SN-clean (2.0GB)](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_clean.zip)
-* [SN-noisy (1.5GB)](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_noisy.zip)
-* [KITTI (5.6GB)](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_kitti.zip)
-* [bathtubs (3.1GB)](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_bathtub.zip)
-* [chairs (3.8GB)](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_chair.zip)
-* [desks (3.8GB)](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_desk.zip)
-* [tables (3.6GB)](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_table.zip)
-* [ModelNet10 (6.1GB)](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_modelnet10.zip)
-* [ShapeNet Models (241.5MB)](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_shapenet_models.zip)
-* [ModelNet10 (3.5GB)](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_modelnet10_models.zip)
+* SN-clean (2.0GB): [Amazon AWS](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_clean.zip) [MPI-INF](https://datasets.d2.mpi-inf.mpg.de/ijcv2018-shape-completion/ijcv2018_shape_completion_clean.zip)
+* SN-noisy (1.5GB): [Amazon AWS](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_noisy.zip) [MPI-INF](https://datasets.d2.mpi-inf.mpg.de/ijcv2018-shape-completion/ijcv2018_shape_completion_noisy.zip)
+* KITTI (5.6GB): [Amazon AWS](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_kitti.zip) [MPI-INF](https://datasets.d2.mpi-inf.mpg.de/ijcv2018-shape-completion/ijcv2018_shape_completion_kitti.zip)
+* bathtubs (3.1GB): [Amazon AWS](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_bathtub.zip) [MPI-INF](https://datasets.d2.mpi-inf.mpg.de/ijcv2018-shape-completion/ijcv2018_shape_completion_bathtub.zip)
+* chairs (3.8GB): [Amazon AWS](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_chair.zip) [MPI-INF](https://datasets.d2.mpi-inf.mpg.de/ijcv2018-shape-completion/ijcv2018_shape_completion_chair.zip)
+* desks (3.8GB): [Amazon AWS](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_desk.zip) [MPI-INF](https://datasets.d2.mpi-inf.mpg.de/ijcv2018-shape-completion/ijcv2018_shape_completion_desk.zip)
+* tables (3.6GB): [Amazon AWS](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_table.zip) [MPI-INF](https://datasets.d2.mpi-inf.mpg.de/ijcv2018-shape-completion/ijcv2018_shape_completion_table.zip)
+* ModelNet10 (6.1GB): [Amazon AWS](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_modelnet10.zip) [MPI-INF](https://datasets.d2.mpi-inf.mpg.de/ijcv2018-shape-completion/ijcv2018_shape_completion_modelnet10.zip)
+* ShapeNet Models (241.5MB): [Amazon AWS](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_shapenet_models.zip) [MPI-INF](https://datasets.d2.mpi-inf.mpg.de/ijcv2018-shape-completion/ijcv2018_shape_completion_shapenet_models.zip)
+* ModelNet10 Models (3.5GB): [Amazon AWS](https://s3.eu-central-1.amazonaws.com/avg-shape-completion/arxiv2018_shape_completion_modelnet10_models.zip) [MPI-INF](https://datasets.d2.mpi-inf.mpg.de/ijcv2018-shape-completion/ijcv2018_shape_completion_modelnet10_models.zip)
 
 **If these links do not work anymore, please let us know!**
 
